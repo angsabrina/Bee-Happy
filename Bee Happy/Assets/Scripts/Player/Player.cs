@@ -1,0 +1,52 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Player : MonoBehaviour {
+
+    public Slider xpSlider;
+    public Text levelNum;
+    public Text levelUpText;
+    Text leveluptext;
+    GameObject canvas;
+    int XP = 0;
+    int level = 0;
+
+    void start()
+    {
+        xpSlider.value = XP;
+        levelNum.text = level.ToString();
+        canvas = GameObject.Find("Canvas");
+    }
+
+    public void increaseXP(int XPamount)
+    {
+        XP += XPamount;
+        xpSlider.value = XP;
+        int XPneeded = 200;
+        xpSlider.maxValue = XPneeded;
+        if (XP >= XPneeded)
+        {
+            //level up
+            level++;
+            //showLevelUpMessage(level);
+            levelNum.text = level.ToString();
+
+            //xp reset
+            XP -= XPneeded;
+            xpSlider.minValue = XP;
+            xpSlider.value = XP;
+            XPneeded *= 2;
+            xpSlider.maxValue = XPneeded;
+        }
+    }
+
+    //void showLevelUpMessage(int level)
+    //{
+    //    leveluptext = Instantiate(levelUpText) as Text;
+    //    leveluptext.text = "You just leveled up! You're now level " + level.ToString();
+    //    leveluptext.transform.SetParent(canvas.transform, false);
+    //    Destroy(leveluptext, 1);
+    //}
+}
