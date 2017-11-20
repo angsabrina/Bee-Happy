@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
+    
+    public static Inventory Instance { get; private set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    List<GameObject> inventory;
+
+    public Inventory(int size)
+    {
+        inventory = new List<GameObject>(size);
+    }
+
+    public void AddFlowerInventory(GameObject flower)
+    {
+        inventory.Add(flower);
+
+        foreach(GameObject g in inventory)
+        {
+            Debug.Log(g.name);
+        }
+    }
 }

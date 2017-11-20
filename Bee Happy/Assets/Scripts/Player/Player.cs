@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+    public static Player Instance { get; private set; }
+
     public Slider xpSlider;
     public Text levelNum;
     public Text levelUpText;
@@ -12,12 +14,13 @@ public class Player : MonoBehaviour {
     GameObject canvas;
     int XP = 0;
     int level = 0;
+    public Inventory inventory;
 
     void start()
     {
         xpSlider.value = XP;
         levelNum.text = level.ToString();
-        canvas = GameObject.Find("Canvas");
+        inventory = new Inventory(54);
     }
 
     public void increaseXP(int XPamount)
@@ -29,8 +32,7 @@ public class Player : MonoBehaviour {
         if (XP >= XPneeded)
         {
             //level up
-            level++;
-            //showLevelUpMessage(level);
+            showLevelUpMessage(++level);
             levelNum.text = level.ToString();
 
             //xp reset
@@ -42,11 +44,12 @@ public class Player : MonoBehaviour {
         }
     }
 
-    //void showLevelUpMessage(int level)
-    //{
-    //    leveluptext = Instantiate(levelUpText) as Text;
-    //    leveluptext.text = "You just leveled up! You're now level " + level.ToString();
-    //    leveluptext.transform.SetParent(canvas.transform, false);
-    //    Destroy(leveluptext, 1);
-    //}
+    void showLevelUpMessage(int level)
+    {
+        leveluptext = Instantiate(levelUpText);
+        canvas = GameObject.Find("Canvas");
+        leveluptext.text = "You just leveled up! You're now level " + level.ToString();
+        leveluptext.transform.SetParent(canvas.transform, false);
+        Destroy(leveluptext.gameObject, 1);
+    }
 }

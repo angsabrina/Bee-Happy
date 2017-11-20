@@ -64,7 +64,8 @@ public class Flower : MonoBehaviour {
         {
             if (a.gameObject.tag == "Player" && Input.GetKeyDown("e"))
             {
-                //Debug.Log("Collected a " + gameObject.name);
+                //Player.Instance.inventory.AddFlowerInventory(gameObject);
+                //Inventory.Instance.AddFlowerInventory(gameObject);
                 ShowFlowerMessage(gameObject.name);
                 player.GetComponent<Player>().increaseXP(XP);
                 Destroy(gameObject);
@@ -74,10 +75,10 @@ public class Flower : MonoBehaviour {
 
     void ShowFlowerMessage(string flower)
     {
-        flowerPickUp = Instantiate(pickUpMessage) as Text;
+        flowerPickUp = Instantiate(pickUpMessage);
         flowerPickUp.text = "You just picked up a " + flower;
         flowerPickUp.transform.SetParent(canvas.transform, false);
-        Destroy(flowerPickUp, 1);
+        Destroy(flowerPickUp.gameObject, 1);
     }
 
     public int getFlowerXP()

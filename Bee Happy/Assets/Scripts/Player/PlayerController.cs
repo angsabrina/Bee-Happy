@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
+
+    public GameObject inventory;
+    private bool inventoryOpen;
 
     void Start()
     {
@@ -28,5 +32,14 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        inventoryOpen = inventory.activeInHierarchy;
+        if (Input.GetKeyDown("1") && !inventoryOpen)
+        {
+            inventory.SetActive(true);
+        } else if (Input.GetKeyDown("1") && inventoryOpen) {
+            inventory.SetActive(false);
+        }
+
     }
 }
