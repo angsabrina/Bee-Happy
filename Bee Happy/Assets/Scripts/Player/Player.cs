@@ -14,13 +14,11 @@ public class Player : MonoBehaviour {
     GameObject canvas;
     int XP = 0;
     int level = 0;
-    public Inventory inventory;
 
     void start()
     {
         xpSlider.value = XP;
         levelNum.text = level.ToString();
-        inventory = new Inventory(54);
     }
 
     public void increaseXP(int XPamount)

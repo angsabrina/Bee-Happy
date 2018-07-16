@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -8,15 +9,21 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8.0F;
     public float gravity = 20.0F;
 
+    GameObject canvas;
+    public Text pickUpMessage;
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
+    private GameObject player;
 
-    public GameObject inventory;
-    private bool inventoryOpen;
+    //inventory
+    private GameObject inventory;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        player = GameObject.Find("Player");
+        canvas = GameObject.Find("Canvas");
+        inventory = GameObject.Find("Inventory");
     }
 
     void Update()
@@ -32,14 +39,25 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+    }
 
-        inventoryOpen = inventory.activeInHierarchy;
-        if (Input.GetKeyDown("1") && !inventoryOpen)
+    public void ReachedItem(GameObject item) {
+        if (item.tag == "Flower" && Input.GetKeyDown("e"))
         {
-            inventory.SetActive(true);
-        } else if (Input.GetKeyDown("1") && inventoryOpen) {
-            inventory.SetActive(false);
+            Debug.Log(inventory.GetComponent<Inventory>().playerInventory);
+            inventory.GetComponent<Inventory>().addToInventory(item);
+            ShowFlowerMessage(item.name);
+            GetComponent<Player>().increaseXP(item.GetComponent<Flower>().getFlowerXP());
+            Destroy(item);
         }
+    }
 
+    void ShowFlowerMessage(string flower)
+    {
+        Text flowerPickUp;
+        flowerPickUp = Instantiate(pickUpMessage);
+        flowerPickUp.text = "You just picked up a " + flower;
+        flowerPickUp.transform.SetParent(canvas.transform, false);
+        Destroy(flowerPickUp.gameObject, 1);
     }
 }
