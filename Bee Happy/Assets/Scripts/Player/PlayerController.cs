@@ -39,6 +39,17 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        if (Input.GetKeyDown("i"))
+        {
+            if (!inventory.activeInHierarchy)
+            {
+                inventory.SetActive(true);
+            } else
+            {
+                inventory.SetActive(false);
+            }
+        }
     }
 
     public void ReachedItem(GameObject item) {
