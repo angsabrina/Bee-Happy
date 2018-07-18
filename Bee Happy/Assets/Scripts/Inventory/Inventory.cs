@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour{
 
+
     //Fill ins
     public Dictionary<GameObject, int> playerInventory = new Dictionary<GameObject, int>();
     public GameObject playerGUI;
