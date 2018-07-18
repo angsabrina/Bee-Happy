@@ -16,14 +16,13 @@ public class PlayerController : MonoBehaviour
     private GameObject player;
 
     //inventory
-    private GameObject inventory;
+    public GameObject inventory;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         player = GameObject.Find("Player");
         canvas = GameObject.Find("Canvas");
-        inventory = GameObject.Find("Inventory");
     }
 
     void Update()
@@ -56,7 +55,7 @@ public class PlayerController : MonoBehaviour
         if (item.tag == "Flower" && Input.GetKeyDown("e"))
         {
             Debug.Log(inventory.GetComponent<Inventory>().playerInventory);
-            inventory.GetComponent<Inventory>().addToInventory(item);
+            inventory.GetComponent<Inventory>().addToInventory(item, item.GetComponent<Flower>().getFlowerImage());
             ShowFlowerMessage(item.name);
             GetComponent<Player>().increaseXP(item.GetComponent<Flower>().getFlowerXP());
             Destroy(item);
