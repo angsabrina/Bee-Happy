@@ -75,4 +75,9 @@ public class Flower : MonoBehaviour {
     {
         return flowerXP;
     }
+
+    public Image getFlowerImage()
+    {
+        return GetComponentInChildren<Image>() == null ? null : GetComponentInChildren<Image>();
+    }
 }
