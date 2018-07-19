@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
     public void ReachedItem(GameObject item) {
         if (item.tag == "Flower" && Input.GetKeyDown("e"))
         {
-            Debug.Log(inventory.GetComponent<Inventory>().playerInventory);
             inventory.GetComponent<Inventory>().addToInventory(item, item.GetComponent<Flower>().getFlowerImage());
             ShowFlowerMessage(item.name);
             GetComponent<Player>().increaseXP(item.GetComponent<Flower>().getFlowerXP());
