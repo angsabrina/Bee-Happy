@@ -12,8 +12,8 @@ public class Inventory : MonoBehaviour{
     public GameObject slotPrefab;
 
     //Vars
-    private int inventoryRows = 6;
-    private int inventoryCols = 7;
+    private int inventoryCols = 6;
+    private int inventoryRows = 7;
     private GameObject[,] inventoryPics;
     private int uniqueItemCount = 0;
 
@@ -24,11 +24,11 @@ public class Inventory : MonoBehaviour{
     public void Awake()
     {
         Debug.Log("In inventory awkae");
-        inventoryPics = new GameObject[inventoryRows, inventoryCols];
+        inventoryPics = new GameObject[inventoryCols, inventoryRows];
 
-        for (int i = 0; i < inventoryRows; i++)
+        for (int i = 0; i < inventoryCols; i++)
         {
-            for (int j = 0; j < inventoryCols; j++)
+            for (int j = 0; j < inventoryRows; j++)
             {
                 GameObject slot = Instantiate(slotPrefab);
                 slot.GetComponent<Transform>().SetParent(playerGUI.transform);
@@ -58,17 +58,27 @@ public class Inventory : MonoBehaviour{
         if (playerInventory.ContainsKey(item))
         {
             playerInventory[item]++;
-        } else
+        }
+        else
         {
             playerInventory.Add(item, 1);
             uniqueItemCount++;
-            int colth = uniqueItemCount % inventoryRows - 1;
+            int colth;
             int rowth = uniqueItemCount / inventoryRows;
-            Debug.Log("rowth: " + rowth + " colth: " + colth);
+            if (uniqueItemCount % inventoryCols == 1)
+            {
+                colth = 0;
+            } else if (uniqueItemCount % inventoryCols == 0)
+            {
+                colth = inventoryCols - 1;
+            } else
+            {
+                colth = uniqueItemCount % inventoryCols - 1;
+            }
             inventoryPics[colth, rowth].GetComponent<RawImage>().texture = itemImage.mainTexture;
-            //checkInventoryPics();
+            Debug.Log("itemCount: " + uniqueItemCount);
+            Debug.Log("rowth: " + rowth + " colth: " + colth);
         }
-        //Debug.Log("This was added to your inventory: " + item);
     }
 
     public void removeFromInventory(GameObject item)
