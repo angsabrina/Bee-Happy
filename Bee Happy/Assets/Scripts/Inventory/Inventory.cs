@@ -23,7 +23,6 @@ public class Inventory : MonoBehaviour{
 
     public void Awake()
     {
-        Debug.Log("In inventory awkae");
         inventoryPics = new GameObject[inventoryCols, inventoryRows];
 
         for (int i = 0; i < inventoryCols; i++)
@@ -76,8 +75,6 @@ public class Inventory : MonoBehaviour{
                 colth = uniqueItemCount % inventoryCols - 1;
             }
             inventoryPics[colth, rowth].GetComponent<RawImage>().texture = itemImage.mainTexture;
-            Debug.Log("itemCount: " + uniqueItemCount);
-            Debug.Log("rowth: " + rowth + " colth: " + colth);
         }
     }
 
