@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1500
     height: 917
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -106,8 +106,8 @@ MonoBehaviour:
     y: 30
     width: 1500
     height: 867
-  m_MinSize: {x: 681, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
   controlID: 76
 --- !u!114 &6
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 53
+  controlID: 11
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -201,8 +201,8 @@ MonoBehaviour:
     y: 0
     width: 940
     height: 591
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -254,8 +254,8 @@ MonoBehaviour:
     y: 0
     width: 351
     height: 867
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -368,7 +368,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: f8faffffa0fbffff00000000de2b0000ea2b00003e2c0000da2c0000
+    m_ExpandedIDs: 4ef4ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -418,14 +418,14 @@ MonoBehaviour:
     width: 936
     height: 570
   m_SceneLighting: 1
-  lastFramingTime: 12309.15565039768
+  lastFramingTime: 25.371481904652505
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 572.2681, y: 364.01202, z: 57.542114}
+    m_Target: {x: -16.38517, y: -2.3061, z: 0.45118904}
     speed: 2
-    m_Value: {x: 572.2681, y: 364.01202, z: 57.542114}
+    m_Value: {x: -16.38517, y: -2.3061, z: 0.45118904}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -448,13 +448,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.07520705, y: -0.028722389, z: 0.0021672398, w: -0.99675184}
+    m_Target: {x: -0.20949674, y: 0.18038344, z: -0.039355185, w: -0.9602208}
     speed: 2
-    m_Value: {x: -0.07520705, y: -0.028722389, z: 0.0021672398, w: -0.99675184}
+    m_Value: {x: -0.20949675, y: 0.18038346, z: -0.03935519, w: -0.9602209}
   m_Size:
-    m_Target: 826.11334
+    m_Target: 16.226036
     speed: 2
-    m_Value: 826.11334
+    m_Value: 16.226036
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -530,19 +530,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Resources/Sprites
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Assets/Resources/Sprites
+  - Assets/Scripts
   m_LastFoldersGridSize: 71
   m_LastProjectPath: C:\Users\angsa\Desktop\Unity\Bee-Happy\Bee Happy
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 114}
-    m_SelectedIDs: 84280000
-    m_LastClickedID: 10372
-    m_ExpandedIDs: 000000003c270000d4270000e6270000a0290000b8290000582a00006e2a0000c42a0000f62a000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 262}
+    m_SelectedIDs: a22a0000
+    m_LastClickedID: 10914
+    m_ExpandedIDs: 0000000028280000be280000ce280000a22a0000ba2a00006a2b0000802b0000f02b0000222c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -570,7 +570,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003c270000d4270000e6270000a0290000b8290000582a00006e2a0000c42a0000f62a0000
+    m_ExpandedIDs: 0000000028280000be280000ce280000a22a0000ba2a00006a2b0000802b0000f02b0000222c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
