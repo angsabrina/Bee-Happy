@@ -37,21 +37,8 @@ public class Inventory : MonoBehaviour{
                 inventoryPics[i, j] = slot;
             }
         }
-        //checkInventoryPics();
     }
 
-    //private void checkInventoryPics()
-    //{
-    //    for (int i = 0; i < inventoryRows; i++)
-    //    {
-    //        for (int j = 0; j < inventoryCols; j++)
-    //        {
-    //            Debug.Log(inventoryPics[i, j] + "   ");
-    //        }
-    //        Debug.Log("\n");
-    //    }
-    //}
-    
     public void addToInventory(GameObject item, Image itemImage)
     {
         if (playerInventory.ContainsKey(item))
@@ -75,6 +62,7 @@ public class Inventory : MonoBehaviour{
                 colth = uniqueItemCount % inventoryCols - 1;
             }
             inventoryPics[colth, rowth].GetComponent<RawImage>().texture = itemImage.mainTexture;
+            inventoryPics[colth, rowth].gameObject.tag = "InventoryItem";
         }
     }
 
