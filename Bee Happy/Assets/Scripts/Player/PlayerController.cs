@@ -39,19 +39,23 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
 
-        if (Input.GetKeyDown("i"))
+        //works but fails when Inventory is open at game start (probably won't be)
+        if (Input.GetKeyDown("i") && inventory.activeInHierarchy)
         {
-            if (!inventory.activeInHierarchy)
-            {
-                inventory.SetActive(true);
-            } else
-            {
-                inventory.SetActive(false);
-            }
+            inventory.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            transform.GetComponent<MouseLook>().enabled = true;
+        }
+        else if (Input.GetKeyDown("i") && !inventory.activeInHierarchy) 
+        {
+            inventory.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            transform.GetComponent<MouseLook>().enabled = false;
         }
     }
 
-    public void ReachedItem(GameObject item) {
+
+public void ReachedItem(GameObject item) {
         if (item.tag == "Flower" && Input.GetKeyDown("e"))
         {
             inventory.GetComponent<Inventory>().addToInventory(item, item.GetComponent<Flower>().getFlowerImage());
