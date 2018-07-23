@@ -16,20 +16,28 @@ public class PlayerController : MonoBehaviour
     private GameObject player;
 
     //inventory
-    public GameObject inventory;
+    public CanvasGroup inventoryCanvas;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         player = GameObject.Find("Player");
-        canvas = GameObject.Find("Canvas");
+        canvas = GameObject.Find("StatsCanvas");
+        inventoryCanvas.alpha = 0;
     }
 
     void Update()
     {
         if (controller.isGrounded)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            var horizontalAxis = Input.GetAxis("Horizontal");
+            var verticalAxis = Input.GetAxis("Vertical");
+            if(inventoryCanvas.alpha == 1)
+            {
+                horizontalAxis = 0;
+                verticalAxis = 0;
+            }
+            moveDirection = new Vector3(horizontalAxis, 0, verticalAxis);
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= walkSpeed;
             if (Input.GetButton("Jump"))
@@ -40,17 +48,18 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
 
         //works but fails when Inventory is open at game start (probably won't be)
-        if (Input.GetKeyDown("i") && inventory.activeInHierarchy)
+        if (Input.GetKeyDown("i") && inventoryCanvas.alpha == 1)
         {
-            inventory.SetActive(false);
+            inventoryCanvas.alpha = 0;
             Cursor.lockState = CursorLockMode.Locked;
             transform.GetComponent<MouseLook>().enabled = true;
         }
-        else if (Input.GetKeyDown("i") && !inventory.activeInHierarchy) 
+        else if (Input.GetKeyDown("i") && inventoryCanvas.alpha == 0) 
         {
-            inventory.SetActive(true);
+            inventoryCanvas.alpha = 1;
             Cursor.lockState = CursorLockMode.None;
             transform.GetComponent<MouseLook>().enabled = false;
+
         }
     }
 
@@ -58,7 +67,7 @@ public class PlayerController : MonoBehaviour
 public void ReachedItem(GameObject item) {
         if (item.tag == "Flower" && Input.GetKeyDown("e"))
         {
-            inventory.GetComponent<Inventory>().addToInventory(item, item.GetComponent<Flower>().getFlowerImage());
+            inventoryCanvas.GetComponentInChildren<Inventory>().addToInventory(item, item.GetComponent<Flower>().getFlowerImage());
             ShowFlowerMessage(item.name);
             GetComponent<Player>().increaseXP(item.GetComponent<Flower>().getFlowerXP());
             Destroy(item);

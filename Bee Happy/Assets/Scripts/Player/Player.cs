@@ -45,9 +45,9 @@ public class Player : MonoBehaviour {
     void showLevelUpMessage(int level)
     {
         leveluptext = Instantiate(levelUpText);
-        canvas = GameObject.Find("Canvas");
+        canvas = GameObject.Find("StatsCanvas");
         leveluptext.text = "You just leveled up! You're now level " + level.ToString();
         leveluptext.transform.SetParent(canvas.transform, false);
-        Destroy(leveluptext.gameObject, 1);
+        Destroy(leveluptext.gameObject, 5);
     }
 }
