@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public Text pickUpMessage;
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
-    private GameObject player;
+    //private GameObject player;
 
     //inventory
     public CanvasGroup inventoryCanvas;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        player = GameObject.Find("Player");
+        //player = GameObject.Find("Player");
         canvas = GameObject.Find("StatsCanvas");
         inventoryCanvas.alpha = 0;
     }
@@ -64,13 +64,18 @@ public class PlayerController : MonoBehaviour
     }
 
 
-public void ReachedItem(GameObject item) {
+    public void ReachedItem(GameObject item) {
         if (item.tag == "Flower" && Input.GetKeyDown("e"))
         {
             inventoryCanvas.GetComponentInChildren<Inventory>().addToInventory(item, item.GetComponent<Flower>().getFlowerImage());
             ShowFlowerMessage(item.name);
             GetComponent<Player>().increaseXP(item.GetComponent<Flower>().getFlowerXP());
             Destroy(item);
+        }
+
+        if (item.tag == "Store" && Input.GetKeyDown("e"))
+        {
+           Debug.Log(item.tag);
         }
     }
 

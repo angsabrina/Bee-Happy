@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class StoreInteraction : MonoBehaviour {
 
+    private void OnMouseEnter()
+    {
+        
+    }
 
-
+    
 }
